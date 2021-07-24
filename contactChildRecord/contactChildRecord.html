@@ -1,0 +1,14 @@
+<template>
+  
+    <lightning-card  title="Account Record">
+    <div style="width:500px; padding-left:100px">
+        <lightning-input label="Account Id" value={accountId} onchange={handleChange}></lightning-input>
+    <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2" padding="around-small">
+        <div>
+        <lightning-button label="Submit" variant="brand" onclick={handleSubmit}></lightning-button>
+        </div>
+    </lightning-layout-item>
+    </div>
+    </lightning-card>
+
+</template>

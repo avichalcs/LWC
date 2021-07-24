@@ -1,0 +1,39 @@
+<template>
+    <c-contact-child-record onsamplevent={handleChange}></c-contact-child-record>
+    <template if:true={boolVisible}>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="LastName">LastName</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Email">Email</div>
+                </th>
+            </tr>
+    </thead>
+        <template for:each={records} for:item="con">
+            <tr key={con.Id}>
+                <td>
+                    {con.Name}
+                </td>
+                <td>
+                    {con.LastName}                   
+                </td>
+                <td>
+                    {con.Phone}
+                </td>
+                <td>
+                    {con.Email}
+                </td>
+            </tr>
+        </template>
+    </table>
+</template>
+</template>

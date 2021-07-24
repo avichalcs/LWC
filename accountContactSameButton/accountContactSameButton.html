@@ -1,0 +1,79 @@
+<template>
+    <lightning-card title="Create Account Record">
+        <lightning-layout>
+            <lightning-layout-item size="6">
+ 
+                
+                <lightning-input class="slds-p-around_medium" label="Name" name="accoutName"
+                    onchange={nameChangedHandler}></lightning-input>
+                <lightning-input class="slds-p-around_medium" label="Account Number" name="accoutNumber"
+                    onchange={numberChangedHandler}></lightning-input>
+                <lightning-input class="slds-p-around_medium" label="Phone" type="phone" name="accountPhone"
+                    onchange={phoneChangedHandler}></lightning-input>
+                <br/>
+            
+                
+                    <h3 slot="title">
+                        <lightning-icon icon-name="standard:timesheet" alternative-text="Event" size="small"></lightning-icon>
+                        &nbsp;Create Contact
+                    </h3>
+                    <div class="slds-m-around--xx-large">
+                        <div class="slds-float_right slds-p-bottom_small">
+                            <h1 class="slds-page-header__title">Add Contact
+                                <lightning-button-icon icon-name="utility:add"  size="large" variant="bare" alternative-text="Add" onclick={addRow}> </lightning-button-icon>
+                            </h1>
+                        </div>
+                        <div class="container-fluid">        
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate"></div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="First Name">First Name</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Last Name">Last Name</div>
+                                        </th>
+                                    </tr>
+                                </thead>   
+                                <tbody>      
+                                    
+                                    <template for:each={contactList} for:item="con" for:index="index">
+                                        <tr key={keyindex}> 
+                                            <td>{index}</td>                                                  
+                                            <td>
+                                                <lightning-input label="First Name" access-key={index} id={index} type='text' value={con.FirstName} onchange={fNameChangedHandler}></lightning-input>                               
+                                            </td>
+                                            <td>
+                                                <lightning-input label="Last Name" access-key={index} id={index} type='text' value={con.LastName} onchange={lNameChangedHandler}></lightning-input>                        
+                                            </td>
+                                            <td>
+                                                <lightning-icon icon-name="action:delete"  access-key={index} id={index} alternative-text="Click to Call" size="small" title="large size" onclick={removeRow}>
+                                                </lightning-icon>
+                                                
+                        
+                                            </td>
+                                        </tr>
+                                    </template>
+                                     
+                                </tbody>
+                            </table>
+        
+                        </div>
+                    </div>
+
+
+
+ <lightning-button class="slds-m-left_x-small" label="Create" variant="brand"
+                    onclick={Create}></lightning-button>
+
+                    <lightning-button class="slds-m-left_x-small" label="Cancel" variant="brand"
+                    onclick={cancelForm}></lightning-button>
+        
+                </lightning-layout-item>
+
+        </lightning-layout>
+    </lightning-card>
+</template>

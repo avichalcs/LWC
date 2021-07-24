@@ -1,0 +1,93 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-combobox name="Class" label="Class" value={value} placeholder="Select Class"
+                        options={classPickList} onchange={handleclassPickList}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-input type="toggle" label="Tabular View" name={toggleOff} onchange={handletabular}>
+                    </lightning-input>
+
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-input type="toggle" label="Graphical View" name={graphicalOff}
+                        onchange={handlegraphical}>
+                    </lightning-input>
+                </div>
+            </div>
+
+        </div>
+
+        <template if:true={showTable}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Roll Number">Roll Number</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Name">Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Class Percentage">Class Percentage</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Position">Position</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <template for:each={studentList} for:item="stu">
+                        <tr key={stu.Id} draggable="true" ondragstart={drag} id={stu.Id}>
+                            <th scope="col">
+                                <div>{stu.Roll_Number__c}</div>
+                            </th>
+                            <th scope="col">
+                                <div>{stu.Name__c}</div>
+                            </th>
+                            <th scope="col">
+                                <div>{stu.Class_Percentage__c}</div>
+                            </th>
+                            <th scope="col">
+                                <div>{stu.Position__c}</div>
+                            </th>
+                            <th scope="col">
+                            <button value="Remove" id={stu.Id} onclick={remove1}>Remove</button>
+                            </th>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+
+       
+            <template if:true={showGraphics}>
+                <lightning-card title="Sitting Arranagement">
+                <div class="wrapper">
+                    <div class={customClass1} data-id="divblock" onclick={handleclick1}  ondragover={allowDrop1} ondrop={drop1}>1,1</div>                
+                    <div class={customClass2} data-id="divblock1" onclick={handleclick2} ondragover={allowDrop2} ondrop={drop2}>1,2</div>
+                    <div class={customClass3} data-id="divblock2" onclick={handleclick3} ondragover={allowDrop3} ondrop={drop3}>1,3</div>
+                    <div class={customClass4} data-id="divblock3" onclick={handleclick4} ondragover={allowDrop4} ondrop={drop4}>1,4</div>
+                    <div class={customClass5} data-id="divblock4" onclick={handleclick5} ondragover={allowDrop5} ondrop={drop5}>2,1</div>
+                    <div class={customClass6} data-id="divblock5" onclick={handleclick6} ondragover={allowDrop6} ondrop={drop6}>2,2</div>
+                    <div class={customClass7} data-id="divblock6" onclick={handleclick7} ondragover={allowDrop7} ondrop={drop7}>2,3</div>
+                    <div class={customClass8} data-id="divblock7" onclick={handleclick8} ondragover={allowDrop8} ondrop={drop8}>2,4</div>
+                </div>
+            </lightning-card>
+            </template>
+        </lightning-card>
+    
+</template>

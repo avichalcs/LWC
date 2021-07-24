@@ -1,0 +1,74 @@
+<template>
+    <lightning-card title="Create Account Record">
+        <lightning-layout>
+            <lightning-layout-item size="6">
+ 
+                <!-- Displaying fields to get information. -->
+                <lightning-input class="slds-p-around_medium" label="Name" name="accoutName"
+                    onchange={nameChangedHandler}></lightning-input>
+                <lightning-input class="slds-p-around_medium" label="Account Number" name="accoutNumber"
+                    onchange={numberChangedHandler}></lightning-input>
+                <lightning-input class="slds-p-around_medium" label="Phone" type="phone" name="accountPhone"
+                    onchange={phoneChangedHandler}></lightning-input>
+                <br/>
+                <lightning-button class="slds-m-left_x-small" label="Create Account" variant="brand"
+                    onclick={createAccount}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+
+   <!----- <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}>
+        </lightning-datatable>
+    </div>
+    -------->
+
+
+
+
+
+
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Account Number">Account Number</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={data} for:item="con">
+                <tr key={con.Id}>
+                    <th scope="col">
+                        <div>{con.Name}</div>
+                    </th>
+                    <th scope="col">
+                        <div>{con.AccountNumber}</div>
+                    </th>
+                    <th scope="col">
+                        <div>{con.Phone}</div>
+                    </th>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+</template>

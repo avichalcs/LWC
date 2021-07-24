@@ -1,0 +1,35 @@
+.v1{
+    border-left: 1px solid rgb(1, 17, 1);
+    height: 50px;
+    left: 10%;
+    margin-left: 3px;
+    top: 0;
+  }
+  
+.lgc-bg {
+    background-color: rgb(47, 26, 73);
+}
+.slds-item{
+    color:aliceblue
+}
+.slds-item1{
+    color: rgb(43, 18, 66);
+}
+.slds-item2{
+    color: 5px solid black;
+}
+.slds-item5{
+    margin-left: 100px;
+}
+.slds-item6{
+    margin-left: 210px;
+}
+.item{
+    width:240px;
+    height:80px; 
+    border: 2px solid black;
+    
+  }
+.slds-popover__close{
+    color:  black;
+}

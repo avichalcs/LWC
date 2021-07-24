@@ -1,0 +1,262 @@
+<template>
+    <lightning-card title="Hello">
+        <div class="slds-p-around_medium lgc-bg">
+            <ul class="slds-list_horizontal slds-has-dividers_left">
+
+                <li class="slds-item1">
+                    <lightning-icon icon-name="utility:salesforce1" alternative-text="Salesforce" title="Salesforce">
+                    </lightning-icon>
+                </li>
+
+
+                <li class="slds-item">
+                    <lightning-icon icon-name="standard:search" alternative-text="Search" title="Search">
+                    </lightning-icon>
+                </li>
+
+
+                <li class="slds-item">{selectedItemValue}</li>
+
+
+                <li class="slds-item">
+                    <lightning-button-menu alternative-text="Show menu" variant="border-filled"
+                        onselect={handleOnselect}>
+                        <lightning-menu-item value="Contact Search" label="Contact"></lightning-menu-item>
+                    </lightning-button-menu>
+                </li>
+            </ul>
+        </div>
+    </lightning-card>
+
+    <lightning-card>
+
+        <div class="slds-grid slds-wrap">
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-4 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-card title="Assistant Manager">
+                        {amCount}
+                    </lightning-card>
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-4 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-card title="General Manager">
+                        {gmCount}
+                    </lightning-card>
+
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-4 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-card title="Training Manager">
+                        {tmCount}
+                    </lightning-card>
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-4 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-card title="Total Contacts">
+                        {totalCount}
+                    </lightning-card>
+                </div>
+            </div>
+
+        </div>
+
+        <template if:true={isModalOpen2}>
+            <section aria-describedby="dialog-body-id-103" aria-labelledby="dialog-heading-id-108"
+                class="slds-popover slds-nubbin_left" role="dialog">
+                <button
+                    class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                    onclick={closeModal2} title="Close dialog">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close dialog</span>
+                </button>
+                <header class="slds-popover__header">
+                    <h2 class="slds-text-heading_small" id="dialog-heading-id-108">Available Contacts</h2>
+                </header>
+                <div class="slds-popover__body" id="dialog-body-id-103">
+                    <template if:true={showTable1}>
+                        <div style="height: 300px;">
+                            <lightning-datatable key-field="id" data={data1} columns={columns}>
+                            </lightning-datatable>
+                        </div>
+                    </template>
+                    <p>{noData}</p>
+                </div>
+            </section>
+
+        </template>
+
+
+
+
+
+
+
+
+
+
+
+
+    </lightning-card>
+    <lightning-card>
+        <ul class="slds-list_horizontal slds-has-dividers_left">
+
+            <li class="slds-item">
+                <lightning-icon icon-name="utility:groups" alternative-text="Groups" title="Groups">
+                </lightning-icon>
+            </li>
+            <li class="slds-item2">
+                <h1>Types Of Contact</h1>
+            </li>
+
+            <li class="slds-item6">
+                <lightning-icon icon-name="utility:record_lookup" alternative-text="Search" title="Search">
+                </lightning-icon>
+            </li>
+            <li class="slds-item7">
+                <h1>Search Contact</h1>
+            </li>
+        </ul>
+
+
+
+
+
+
+
+
+
+        <ul class="slds-list_horizontal slds-has-dividers_left">
+            <li class="slds-item3">
+                <div class={customClass} data-id="divblock" onclick={handleclick}>
+                    ...I am Intrested In
+                </div>
+
+            </li>
+            <li class="slds-item3">
+            <template if:true={isModalOpen}>
+                <section aria-describedby="dialog-body-id-101" aria-labelledby="dialog-heading-id-106"
+                    class="slds-popover slds-nubbin_left" role="dialog">
+                    <button
+                        class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                        onclick={closeModal} title="Close dialog">
+                        <svg class="slds-button__icon" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close dialog</span>
+                    </button>
+                    <header class="slds-popover__header">
+                        <h2 class="slds-text-heading_small" id="dialog-heading-id-106">Available Contact Types</h2>
+                    </header>
+                    <div class="slds-popover__body" id="dialog-body-id-101">
+                        <lightning-input type="checkbox" label="Assistant Manager" name="AssistantManager"
+                            checked={isChecked1} onchange={changeCheckbox}></lightning-input>
+                        <lightning-input type="checkbox" label="General Manager" name="GeneralManager"
+                            checked={isChecked2} onchange={changeCheckbox}></lightning-input>
+                        <lightning-input type="checkbox" label="Training Manager" name="TrainingManager"
+                            checked={isChecked3} onchange={changeCheckbox}></lightning-input>
+                    </div>
+                </section>
+            </template>
+            </li>
+                
+            <li class="slds-item5">
+                <lightning-tabset variant="scoped">
+                    <lightning-tab label="Name">
+                        <div class="slds-p-around_medium ">
+                            <lightning-input type="text" label="Enter Some Text" onchange={searchName}></lightning-input>
+                        </div>
+                    </lightning-tab>
+                    <lightning-tab label="Phone">
+                        Phone!
+                    </lightning-tab>
+                    <lightning-tab label="Email">
+                        Email!
+                    </lightning-tab>
+                </lightning-tabset>
+
+            </li>
+
+        </ul>
+
+           
+                <template if:true={isModalOpen1}>
+                    <section aria-describedby="dialog-body-id-102" aria-labelledby="dialog-heading-id-107"
+                        class="slds-popover slds-nubbin_left" role="dialog">
+                        <button
+                            class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                            onclick={closeModal1} title="Close dialog">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close dialog</span>
+                        </button>
+                        <header class="slds-popover__header">
+                            <h2 class="slds-text-heading_small" id="dialog-heading-id-107">Available Contacts</h2>
+                        </header>
+                        <div class="slds-popover__body" id="dialog-body-id-102">
+                            <template if:true={showTable}>
+                                <div style="height: 300px;">
+                                    <lightning-datatable key-field="id" data={data} columns={columns}>
+                                    </lightning-datatable>
+                                </div>
+                            </template>
+                            <p>{noData}</p>
+                        </div>
+                    </section>
+
+                </template>
+       
+    </lightning-card>
+
+
+
+
+    <!----
+    <template if:true={isModalOpen1}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal1}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Available Contacts
+                    </h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <template if:true={showTable}>
+                    <div style="height: 300px;">
+                        <lightning-datatable key-field="id" data={data} columns={columns}>
+                        </lightning-datatable>
+                    </div>
+                </template>
+                <p>{noData}</p>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+---->
+
+
+
+
+
+</template>
