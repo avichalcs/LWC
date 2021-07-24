@@ -1,0 +1,67 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-combobox name="Class" label="Class" value={value} placeholder="Select Class"
+                        options={classPickList} onchange={handleclassPickList}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-input type="toggle" label="Tabular View" name={toggleOff} onchange={handletabular}>
+                    </lightning-input>
+
+                </div>
+            </div>
+
+            <div
+                class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-small slds-p-vertical_x-small">
+                <div class="slds-p-around_small ">
+                    <lightning-input type="toggle" label="Graphical View" name={graphicalOff}
+                        onchange={handlegraphical}>
+                    </lightning-input>
+                </div>
+            </div>
+
+        </div>
+
+        <template if:true={showTable}>
+            <lightning-datatable key-field="id" data={studentList} columns={columns} show-row-number-column="true"
+                hide-checkbox-column="true" onrowaction={callRowAction}>>
+            </lightning-datatable>
+        </template>
+
+        <!----  <div class="slds-grid slds-grid--align-spread">
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            <div class="slds-box"></div>
+            </div>
+    ---->
+       
+            <template if:true={showGraphics}>
+                <lightning-card title="Sitting Arranagement">
+                <div class="wrapper">
+                    <div class={customClass1} data-id="divblock" onclick={handleclick1}>1,1</div>                
+                    <div class={customClass2} data-id="divblock1" onclick={handleclick2}>1,2</div>
+                    <div class={customClass3} data-id="divblock2" onclick={handleclick3}>1,3</div>
+                    <div class={customClass4} data-id="divblock3" onclick={handleclick4}>1,4</div>
+                    <div class={customClass5} data-id="divblock4" onclick={handleclick5}>2,1</div>
+                    <div class={customClass6} data-id="divblock5" onclick={handleclick6}>2,2</div>
+                    <div class={customClass7} data-id="divblock6" onclick={handleclick7}>2,3</div>
+                    <div class={customClass8} data-id="divblock7" onclick={handleclick8}>2,4</div>
+                </div>
+            </lightning-card>
+            </template>
+        </lightning-card>
+    
+</template>
