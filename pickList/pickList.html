@@ -1,0 +1,40 @@
+<template>
+    
+    <div class="slds-grid slds-wrap">
+    
+    <lightning-card title="Industry" icon-name="custom:custom65">
+        <div class=" slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-large slds-p-vertical_x-small">
+            <div class="slds-p-around_large "> 
+            <lightning-combobox name="Industry" 
+                label="Industry" value={value} placeholder="-Select-"
+                options={industryPickList} onchange={handleindustryPickList}>
+            </lightning-combobox>
+        </div> 
+        </div>      
+    </lightning-card> 
+
+
+    <lightning-card title=" Account Rating" icon-name="custom:custom65">
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-large slds-p-vertical_x-small">
+            <div class="slds-p-around_large"> 
+            <lightning-combobox name="Rating" 
+                label="Rating" value={value} placeholder="-Select-"
+                options={RatingPickList} onchange={handleRatingPickList}>
+            </lightning-combobox>
+        </div> 
+        </div>    
+    </lightning-card>
+ 
+    
+    <lightning-card title="Account Type" icon-name="custom:custom65">
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-3 slds-p-horizontal_x-large slds-p-vertical_x-small">
+            <div class="slds-p-around_large"> 
+            <lightning-combobox name="Type" 
+                label="Type" value={value} placeholder="-Select-"
+                options={TypePickList} onchange={handleTypePickList}>
+            </lightning-combobox>
+        </div> 
+        </div>       
+    </lightning-card>
+</div>
+</template>

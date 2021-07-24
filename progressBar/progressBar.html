@@ -1,0 +1,33 @@
+<template>
+    <lightning-card  title="Progress Indicator">
+    <lightning-progress-indicator current-step={value} type="path" variant="base">
+        <template for:each={steps} for:item="step">
+            <lightning-progress-step label={step.label} value={step.value} key={step.label}></lightning-progress-step>
+        </template>
+    </lightning-progress-indicator>
+<lightning-combobox
+    name="progress"
+    label="Status"
+    value={value}
+    placeholder="Select Progress"
+    options={steps}
+    onchange={handleChange} ></lightning-combobox>
+
+<p>Selected value is: {value}</p>
+
+
+<lightning-tabset variant="scoped">
+    <lightning-tab label="Item One">
+        One Content !
+    </lightning-tab>
+    <lightning-tab label="Item Two">
+        Two Content !
+    </lightning-tab>
+    <lightning-tab label="Item Three">
+        Three Content !
+    </lightning-tab>
+</lightning-tabset>
+
+
+</lightning-card>
+</template>
